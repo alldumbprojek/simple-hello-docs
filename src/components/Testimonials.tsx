@@ -1,6 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
@@ -25,6 +29,9 @@ const testimonials = [
 
 export const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -34,16 +41,57 @@ export const Testimonials = () => {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header animation
+      const headerElements = headerRef.current?.children;
+      if (headerElements) {
+        gsap.set(headerElements, { y: 30, opacity: 0 });
+        gsap.to(headerElements, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+
+      // Card animation
+      if (cardRef.current) {
+        gsap.set(cardRef.current, { y: 50, opacity: 0, scale: 0.95 });
+        gsap.to(cardRef.current, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "back.out(1.2)",
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="testimonials" className="py-24 bg-secondary relative overflow-hidden">
+    <section id="testimonials" ref={sectionRef} className="py-16 md:py-24 bg-secondary relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 animate-fade-in">
+        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <p className="text-primary font-semibold tracking-wide uppercase text-sm mb-2 flex items-center justify-center gap-2">
             <span className="w-8 h-0.5 bg-primary inline-block" />
             Testimoni
@@ -58,8 +106,8 @@ export const Testimonials = () => {
         </div>
 
         {/* Testimonial Card */}
-        <div className="max-w-4xl mx-auto animate-float">
-          <Card className="premium-card p-8 md:p-12 shadow-premium hover:shadow-gold-glow transition-all duration-700 border-primary/10 relative overflow-hidden">
+        <div ref={cardRef} className="max-w-4xl mx-auto">
+          <Card className="premium-card p-6 md:p-12 shadow-premium hover:shadow-gold-glow transition-all duration-700 border-primary/10 relative overflow-hidden">
             {/* Decorative gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50" />
             
@@ -80,7 +128,7 @@ export const Testimonials = () => {
               </div>
 
               {/* Text */}
-              <p className="text-lg md:text-2xl text-center leading-relaxed text-foreground italic px-4">
+              <p className="text-base md:text-xl lg:text-2xl text-center leading-relaxed text-foreground italic px-2 md:px-4">
                 {testimonials[currentIndex].text}
               </p>
 

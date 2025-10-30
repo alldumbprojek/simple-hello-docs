@@ -116,7 +116,7 @@ export const About = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-24 bg-background relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Gradient Orbs */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
@@ -132,8 +132,8 @@ export const About = () => {
         </h2>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Image */}
           <div ref={imageRef} className="relative order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-2xl shadow-premium hover:shadow-gold-glow transition-all duration-700">

@@ -168,10 +168,10 @@ export const MenuHighlight = () => {
   }, []);
 
   return (
-    <section id="menu" ref={sectionRef} className="py-24 bg-secondary">
-      <div className="container mx-auto px-6">
+    <section id="menu" ref={sectionRef} className="py-16 md:py-24 bg-secondary">
+      <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
-        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-16">
+        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <p className="text-primary font-semibold tracking-wide uppercase text-sm mb-2">Menu Unggulan</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Hidangan <span className="text-gradient">Istimewa</span> Kami
@@ -182,7 +182,7 @@ export const MenuHighlight = () => {
         </div>
 
         {/* Menu Grid */}
-        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
           {menuItems.map((item, index) => (
             <Card
               key={index}
@@ -212,8 +212,8 @@ export const MenuHighlight = () => {
               </div>
 
               {/* Content */}
-              <div className="p-3">
-                <h3 className="text-sm font-bold group-hover:text-primary transition-colors duration-300 line-clamp-2">
+              <div className="p-2 md:p-3">
+                <h3 className="text-xs md:text-sm font-bold group-hover:text-primary transition-colors duration-300 line-clamp-2">
                   {item.name}
                 </h3>
               </div>

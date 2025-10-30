@@ -122,6 +122,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -131,6 +133,7 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    -webkit-tap-highlight-color: transparent;
   }
   
   * {
@@ -236,6 +239,20 @@ All colors MUST be HSL.
     transform: translateY(-8px);
     box-shadow: var(--shadow-hover);
   }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .hover-lift:active {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+  }
   
   .hover-glow:hover {
     box-shadow: var(--shadow-gold-glow);
@@ -245,8 +262,16 @@ All colors MUST be HSL.
     @apply transition-smooth;
   }
   
-  .hover-scale:hover {
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .hover-scale:active {
+      transform: scale(0.98);
+    }
   }
   
   /* Glass Effect */
@@ -274,6 +299,7 @@ All colors MUST be HSL.
   .premium-card {
     @apply bg-card rounded-xl shadow-premium transition-smooth hover-lift;
     border: 1px solid hsl(var(--border));
+    touch-action: manipulation;
   }
 }
 
@@ -381,4 +407,27 @@ All colors MUST be HSL.
 /* Prevent scroll during loading */
 body.loading {
   overflow: hidden;
+}
+
+/* Touch-friendly interactions */
+button, a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Optimize images for mobile */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smooth scrolling for Safari */
+@supports (-webkit-touch-callout: none) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
 }

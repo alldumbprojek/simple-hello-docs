@@ -190,7 +190,7 @@ export const Hero = () => {
   };
 
   return (
-    <section ref={heroRef} className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-24">
+    <section ref={heroRef} className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20 pb-16 md:pb-24">
       {/* Background Image with Parallax Effect */}
       <div
         ref={backgroundRef}
@@ -225,10 +225,10 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
+        <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
           {/* Main Title with Stagger Animation */}
-          <div ref={titleRef} className="space-y-6">
+          <div ref={titleRef} className="space-y-4 md:space-y-6">
             <div className="title-container">
               <h1 className="hero-title">
                 <span className="title-line line-1">Nikmati Cita Rasa</span>
@@ -240,7 +240,7 @@ export const Hero = () => {
             </div>
 
             <div ref={subtitleRef} className="hero-subtitle">
-              <p className="text-xl md:text-2xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base md:text-xl lg:text-2xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed px-4">
                 Perpaduan sempurna antara tradisi kuliner Indonesia dengan sentuhan modern premium
               </p>
             </div>
@@ -248,33 +248,33 @@ export const Hero = () => {
 
           {/* Stats Bar */}
           <div ref={statsRef} className="stats-bar">
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12 text-white/80">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 lg:gap-12 text-white/80">
               <div className="stat-item">
-                <CountUp to={15} duration={2} className="text-2xl md:text-3xl font-bold text-gold" />
-                <span className="text-2xl md:text-3xl font-bold text-gold">+</span>
-                <div className="text-sm md:text-base">Tahun Pengalaman</div>
+                <CountUp to={15} duration={2} className="text-xl md:text-2xl lg:text-3xl font-bold text-gold" />
+                <span className="text-xl md:text-2xl lg:text-3xl font-bold text-gold">+</span>
+                <div className="text-xs md:text-sm">Tahun Pengalaman</div>
               </div>
               <div className="stat-item">
-                <CountUp to={500} duration={2} className="text-2xl md:text-3xl font-bold text-gold" />
-                <span className="text-2xl md:text-3xl font-bold text-gold">+</span>
-                <div className="text-sm md:text-base">Menu Premium</div>
+                <CountUp to={500} duration={2} className="text-xl md:text-2xl lg:text-3xl font-bold text-gold" />
+                <span className="text-xl md:text-2xl lg:text-3xl font-bold text-gold">+</span>
+                <div className="text-xs md:text-sm">Menu Premium</div>
               </div>
               <div className="stat-item">
-                <CountUp to={10000} duration={2} className="text-2xl md:text-3xl font-bold text-gold" />
-                <span className="text-2xl md:text-3xl font-bold text-gold">+</span>
-                <div className="text-sm md:text-base">Pelanggan Puas</div>
+                <CountUp to={10000} duration={2} className="text-xl md:text-2xl lg:text-3xl font-bold text-gold" />
+                <span className="text-xl md:text-2xl lg:text-3xl font-bold text-gold">+</span>
+                <div className="text-xs md:text-sm">Pelanggan Puas</div>
               </div>
             </div>
           </div>
 
           {/* CTA Buttons */}
           <div ref={ctaRef} className="cta-container">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center pt-6 md:pt-8">
               <Button
                 variant="hero"
                 size="lg"
                 onClick={scrollToMenu}
-                className="hero-btn-primary group"
+                className="hero-btn-primary group w-full sm:w-auto"
               >
                 <span>Lihat Menu</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -284,7 +284,7 @@ export const Hero = () => {
                 variant="outline"
                 size="lg"
                 onClick={handleWhatsApp}
-                className="group border-2 border-gold text-gold hover:bg-gold hover:text-white transition-all duration-300 hover:shadow-gold"
+                className="group border-2 border-gold text-gold hover:bg-gold hover:text-white transition-all duration-300 hover:shadow-gold w-full sm:w-auto"
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 <span>Order via WhatsApp</span>
@@ -295,7 +295,7 @@ export const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block">
         <div className="scroll-indicator">
           <div className="scroll-arrow" />
         </div>

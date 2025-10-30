@@ -120,14 +120,14 @@ export const Gallery = () => {
   }, []);
 
   return (
-    <section id="gallery" ref={sectionRef} className="py-24 bg-secondary/30 relative overflow-hidden">
+    <section id="gallery" ref={sectionRef} className="py-16 md:py-24 bg-secondary/30 relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1.5s' }} />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header */}
-        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-16">
+        <div ref={headerRef} className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <p className="text-primary font-semibold tracking-wide uppercase text-sm mb-2 flex items-center justify-center gap-2">
             <span className="w-8 h-0.5 bg-primary inline-block" />
             Galeri Kami
@@ -142,11 +142,11 @@ export const Gallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div ref={gridRef} className="grid md:grid-cols-2 gap-6">
+        <div ref={gridRef} className="grid sm:grid-cols-2 gap-4 md:gap-6">
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="relative overflow-hidden rounded-2xl shadow-premium group cursor-pointer h-80 hover:shadow-gold-glow transition-all duration-700 border border-border/50"
+              className="relative overflow-hidden rounded-2xl shadow-premium group cursor-pointer h-64 md:h-80 hover:shadow-gold-glow transition-all duration-700 border border-border/50"
             >
               <img
                 src={image.src}

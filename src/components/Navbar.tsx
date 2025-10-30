@@ -42,12 +42,12 @@ export const Navbar = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <a
               href="#"
-              className="text-2xl font-bold text-gradient-gold hover:scale-105 transition-transform cursor-pointer relative group"
+              className="text-xl md:text-2xl font-bold text-gradient-gold hover:scale-105 transition-transform cursor-pointer relative group"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -106,8 +106,9 @@ export const Navbar = () => {
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
+        style={{ paddingTop: '4rem' }}
       >
-        <div className="flex flex-col items-center justify-center h-full space-y-8">
+        <div className="flex flex-col items-center justify-center h-full space-y-6 md:space-y-8 px-4">
           {navLinks.map((link, index) => (
             <a
               key={link.href}
@@ -116,7 +117,7 @@ export const Navbar = () => {
                 e.preventDefault();
                 handleNavClick(link.href);
               }}
-              className={`text-2xl font-semibold text-white hover:text-primary transition-all duration-300 hover:scale-110 ${
+              className={`text-xl md:text-2xl font-semibold text-white hover:text-primary transition-all duration-300 hover:scale-110 ${
                 isMobileMenuOpen ? 'animate-slide-in-right' : ''
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
@@ -124,11 +125,14 @@ export const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <Button 
+              <Button 
             variant="default" 
             size="lg" 
-            onClick={handleWhatsApp}
-            className="shadow-gold-glow animate-glow"
+            onClick={() => {
+              handleWhatsApp();
+              setIsMobileMenuOpen(false);
+            }}
+            className="shadow-gold-glow animate-glow w-full max-w-xs"
           >
             Reservasi Sekarang
           </Button>
